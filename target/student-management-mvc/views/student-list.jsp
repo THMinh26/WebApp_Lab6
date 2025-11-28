@@ -99,6 +99,21 @@ pageEncoding="UTF-8"%> <%@ taglib uri="jakarta.tags.core" prefix="c" %>
         background-color: #c82333;
       }
 
+      .role-badge {
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .role-admin {
+        background: #e74c3c;
+      }
+
+      .role-user {
+        background: #3498db;
+      }
+      
       table {
         width: 100%;
         border-collapse: collapse;
@@ -307,7 +322,9 @@ pageEncoding="UTF-8"%> <%@ taglib uri="jakarta.tags.core" prefix="c" %>
                     ${order == 'asc' ? '▲' : '▼'}
                   </c:if>
                 </th>
-                <th>Actions</th>
+                <c:if test="${sessionScope.role eq 'admin'}">
+                  <th>Actions</th>
+                </c:if>
               </tr>
             </thead>
             <tbody>
@@ -318,23 +335,18 @@ pageEncoding="UTF-8"%> <%@ taglib uri="jakarta.tags.core" prefix="c" %>
                   <td>${student.fullName}</td>
                   <td>${student.email}</td>
                   <td>${student.major}</td>
-                  <td>
-                    <div class="actions">
-                      <a
-                        href="student?action=edit&id=${student.id}"
-                        class="btn btn-secondary"
-                      >
-                        ✏️ Edit
-                      </a>
-                      <a
-                        href="student?action=delete&id=${student.id}"
-                        class="btn btn-danger"
-                        onclick="return confirm('Are you sure you want to delete this student?')"
-                      >
-                        🗑️ Delete
-                      </a>
-                    </div>
-                  </td>
+
+                  <!-- Action buttons - Admin only -->
+                  <c:if test="${sessionScope.role eq 'admin'}">
+                    <td>
+                        <a href="student?action=edit&id=${student.id}" 
+                            class="btn btn-secondary">✏️ Edit</a>
+                        <a href="student?action=delete&id=${student.id}" 
+                            class="btn btn-danger"
+                            onclick="return confirm('Delete this student?')">🗑️ Delete</a>
+                    </td>
+                  </c:if>
+            
                 </tr>
               </c:forEach>
             </tbody>

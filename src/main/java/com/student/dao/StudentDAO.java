@@ -13,8 +13,10 @@ public class StudentDAO {
 
     // Database configuration
     private static final String DB_URL = "jdbc:mysql://localhost:3306/student_management";
-    private static final String DB_USER = "minh";
-    private static final String DB_PASSWORD = "minhmatmong26";
+    private static final String DB_USER = "root";
+    // private static final String DB_USER = "minh";
+    private static final String DB_PASSWORD = "minhmatmong";
+    // private static final String DB_PASSWORD = "minhmatmong26";
 
     // Get database connection
     private Connection getConnection() throws SQLException {

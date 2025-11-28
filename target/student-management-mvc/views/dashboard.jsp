@@ -14,7 +14,7 @@ prefix="c" %>
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background: #f5f5f5;
       }
 
@@ -196,6 +196,7 @@ prefix="c" %>
           </span>
         </div>
         <a href="logout" class="btn-logout">Logout</a>
+        <a href="change-password" class="btn-logout">Change Password</a>
       </div>
     </div>
 
@@ -214,6 +215,7 @@ prefix="c" %>
           <div class="stat-content">
             <h3>${totalStudents}</h3>
             <p>Total Students</p>
+            <!-- <p>${sessionScope.user}</p> -->
           </div>
         </div>
       </div>
